@@ -8,4 +8,5 @@ Read through whatever topic interests you or help you in any way &#128522;
 
 ## Titles
 
-- [Git](./git/README.md)
+- [Git](git/README.md)
+- [Basics of Linux](linux-basics/README.md)

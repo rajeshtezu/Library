@@ -1,5 +1,13 @@
 # Git reset
 
+- [Git reset](#git-reset)
+  - [Un-stage changes](#un-stage-changes)
+  - [Bring committed changes into staging area](#bring-committed-changes-into-staging-area)
+  - [Delete a commit.](#delete-a-commit)
+- [Git restore](#git-restore)
+
+---
+
 ## Un-stage changes
 
 ```

@@ -1,5 +1,20 @@
 # GIT
 
+- [GIT](#git)
+  - [States of git files](#states-of-git-files)
+    - [Flow of states](#flow-of-states)
+  - [Global config on your machine:](#global-config-on-your-machine)
+  - [Create git repository/Project:](#create-git-repositoryproject)
+  - [Misc](#misc)
+  - [Rename a file:](#rename-a-file)
+  - [Commit directly to the repository:](#commit-directly-to-the-repository)
+  - [Undo the changes](#undo-the-changes)
+  - [Un-stage files](#un-stage-files)
+  - [Getting old versions from the repository](#getting-old-versions-from-the-repository)
+  - [Branches](#branches)
+  - [.gitignore](#gitignore)
+  - [GitHub](#github)
+
 Git is most famous and widely used version control system.
 
 ## States of git files
