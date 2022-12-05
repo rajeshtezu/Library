@@ -1,7 +1,7 @@
 # Basics of Linux
 
 - [Most Frequently Used Commands](frequently-used-commands.md)
-- [Vim Editor](vim-editor.md)
-- [CRON Job](cron-job.md)
 - [Process Management](process-management.md)
-- [Shell Scripting Fundamental](shell-scripting-fundamental.md)
+- [Vim Editor - Coming soon](vim-editor.md)
+- [CRON Job - Coming soon](cron-job.md)
+- [Shell Scripting Fundamental - Coming soon](shell-scripting-fundamental.md)

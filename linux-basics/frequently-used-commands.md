@@ -6,13 +6,11 @@ Throughout this file the name `directory` and `folder` will be used interchangea
 
 Most of the command below are shown the way we use in day to day life. I highly recommend to check the command information using `man` command, it will be a great way to learn about a command in depth and you can always refer it without memorizing anything.
 
-&#128683; Work is in progress...
-
 ---
 
 - [Most Frequently Used Commands](#most-frequently-used-commands)
   - [**ls** - List the files/folder in a folder](#ls---list-the-filesfolder-in-a-folder)
-  - [**man** - Opens up manual for sub\_command](#man---opens-up-manual-for-sub_command)
+  - [**man** - Opens up manual for sub_command](#man---opens-up-manual-for-sub_command)
   - [**cd** - Change directory](#cd---change-directory)
   - [**mv** - Move a file from one path to another](#mv---move-a-file-from-one-path-to-another)
   - [**cp** - copy file/folder](#cp---copy-filefolder)
@@ -32,29 +30,20 @@ Most of the command below are shown the way we use in day to day life. I highly 
   - [**grep** - Matches pattern based on regex](#grep---matches-pattern-based-on-regex)
   - [**curl** - Tool for transferring data from or to a server](#curl---tool-for-transferring-data-from-or-to-a-server)
   - [**ping** - Echo request and response utility to/from server](#ping---echo-request-and-response-utility-tofrom-server)
-  - [**ps** - Show process status](#ps---show-process-status)
-  - [**kill** - Kill a process](#kill---kill-a-process)
   - [**echo** - Write variable's value or string to std output](#echo---write-variables-value-or-string-to-std-output)
   - [**shutdown** - Shutdown machine at given time](#shutdown---shutdown-machine-at-given-time)
-  - [**chmod** - Change access/modes of file](#chmod---change-accessmodes-of-file)
   - [**passwd** - Change user's password](#passwd---change-users-password)
   - [**which** - Locate a program file in the user's path](#which---locate-a-program-file-in-the-users-path)
   - [**less** - Read file by opening few lines with forward/backward movement](#less---read-file-by-opening-few-lines-with-forwardbackward-movement)
   - [**whoami** - Display user ID](#whoami---display-user-id)
   - [**whatis** - Find what a command is for](#whatis---find-what-a-command-is-for)
-  - [**wc** - Word count](#wc---word-count)
+  - [**wc** - word, line, character, and byte count](#wc---word-line-character-and-byte-count)
   - [**uname** - Name of the operating system implementation](#uname---name-of-the-operating-system-implementation)
   - [**find** - Walk a file hierarchy](#find---walk-a-file-hierarchy)
-  - [**diff** - Compare files or directory](#diff---compare-files-or-directory)
   - [**export** - Export environment variable](#export---export-environment-variable)
-  - [**chown** - Change file owner and group](#chown---change-file-owner-and-group)
   - [**top** - Display sorted information about processes](#top---display-sorted-information-about-processes)
-  - [**useradd** - Add new user](#useradd---add-new-user)
-  - [**usermod** - Update existing user data](#usermod---update-existing-user-data)
   - [**ssh** - OpenSSH remote login client](#ssh---openssh-remote-login-client)
-  - [**zip** - Package and compress (archive) files](#zip---package-and-compress-archive-files)
-  - [**unzip** - List, test and extract compressed files in a ZIP archive](#unzip---list-test-and-extract-compressed-files-in-a-zip-archive)
-  - [**cal** - Open calendar](#cal---open-calendar)
+  - [**cal** - Display calendar](#cal---display-calendar)
 
 ---
 
@@ -250,7 +239,7 @@ You enter `fakechrome` in the terminal and it executes whole `open -a ...` comma
 ## **grep** - Matches pattern based on regex
 
 - Mostly used as a filter command with a parent command separated with pipe.
-- `|` is called pipe
+- "`|`" is called pipe
 
 Eg:
 
@@ -282,140 +271,189 @@ Eg:
 
 This can be used to check if you are connected to internet or some host is reachable or not.
 
-## **ps** - Show process status
-
-```
-
-```
-
-## **kill** - Kill a process
-
-```
-
-```
-
 ## **echo** - Write variable's value or string to std output
 
+- Write any random string
+
+```
+  $echo <any string>
 ```
 
+- Write variable's value
+
+```
+  $export name="Rajesh Kumar"
+  $echo $name
 ```
 
 ## **shutdown** - Shutdown machine at given time
 
-```
+Provides an automated shutdown procedure for super-users to nicely notify users when the system is shutting down.
+
+- Shutdown immediately
 
 ```
-
-## **chmod** - Change access/modes of file
-
+  $shutdown [now]
 ```
 
+- Shutdown at given time
+
+```
+  $shutdown <time in yymmddhhmm format>
+```
+
+- Shutdown after specified minutes
+
+```
+  $shutdown <+number>
+```
+
+- Put the system to sleep at specified time
+
+```
+  $shutdown -s <yymmddhhmm or +number>
+```
+
+- Reboot the system at the specified time
+
+```
+  $shutdown -r <yymmddhhmm or +number>
 ```
 
 ## **passwd** - Change user's password
 
-```
+- Type below command and follow the prompted message
 
+```
+  $passwd
 ```
 
 ## **which** - Locate a program file in the user's path
 
 ```
+  $which <command or program_name>
+```
 
+- List all instances of executables found
+
+```
+  $which -a <command or program_name>
+```
+
+- No output, just return 0 if all of the executables are found, or 1 if some were not found
+
+```
+  $which -s <command or program_name>
+```
+
+Eg
+
+```
+  $which -a ls cp
 ```
 
 ## **less** - Read file by opening few lines with forward/backward movement
 
 ```
-
+  $less <file_name>
 ```
 
 ## **whoami** - Display user ID
 
-```
+- Display effective user ID as a name
 
+```
+  $whoami
 ```
 
 ## **whatis** - Find what a command is for
 
-```
+- Display online manual documentation pages
 
 ```
-
-## **wc** - Word count
-
+  $whatis <command or program_name>
 ```
 
+## **wc** - word, line, character, and byte count
+
+- Display number of bytes in each input file
+
+```
+  $wc -c <file-1> <file-2> ...
+```
+
+- Display number of lines in each input file
+
+```
+  $wc -l <file-1> <file-2> ...
+```
+
+- Display number of characters in each input file
+
+```
+  $wc -m <file-1> <file-2> ...
+```
+
+- Display number of words in each input file
+
+```
+  $wc -w <file-1> <file-2> ...
 ```
 
 ## **uname** - Name of the operating system implementation
 
 ```
+  $uname [-amnoprsv]
+```
+
+Options are as follows
 
 ```
+-a    Behave as though the options -m, -n, -r, -s, and -v were specified.
+
+-m    Write the type of the current hardware platform to standard output.  (make(1) uses it to set the MACHINE variable.)
+
+-n    Write the name of the system to standard output.
+
+-o    This is a synonym for the -s option, for compatibility with other systems.
+
+-p    Write the type of the machine processor architecture to standard output.  (make(1) uses it to set the MACHINE_ARCH variable.)
+
+-r    Write the current release level of the operating system to standard output.
+
+-s    Write the name of the operating system implementation to standard output.
+
+-v    Write the version level of this release of the operating system to standard output.
+```
+
+**Note**: If the -a flag is specified, or multiple flags are specified, all output is written on a single line, separated by spaces.
 
 ## **find** - Walk a file hierarchy
 
 ```
-
-```
-
-## **diff** - Compare files or directory
-
-```
-
+  $find <directory_name>
 ```
 
 ## **export** - Export environment variable
 
 ```
-
-```
-
-## **chown** - Change file owner and group
-
-```
-
+  $export <name>=<value>
 ```
 
 ## **top** - Display sorted information about processes
 
 ```
-
-```
-
-## **useradd** - Add new user
-
-```
-
-```
-
-## **usermod** - Update existing user data
-
-```
-
+  $top
 ```
 
 ## **ssh** - OpenSSH remote login client
 
 ```
-
+  $ssh <ip_address or host_name or domain_name>
 ```
 
-## **zip** - Package and compress (archive) files
+## **cal** - Display calendar
 
 ```
-
-```
-
-## **unzip** - List, test and extract compressed files in a ZIP archive
-
-```
-
-```
-
-## **cal** - Open calendar
-
-```
-
+  $cal
 ```

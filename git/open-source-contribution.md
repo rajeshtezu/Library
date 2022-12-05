@@ -2,22 +2,22 @@
 
 - **Step-1** : Fork the repository to your account
 
-- **Step-2** : Add origin remote url
+- **Step-2** : Clone your forked repo
+
+```
+  $git clone <URL TO YOUR FORKED REPO>
+```
+
+- **Step-3** : Add origin remote url
 
 ```
   $git remote add origin <URL TO YOUR FORKED REPO>
 ```
 
-- **Step-3** : Add upstream remote url
+- **Step-4** : Add upstream remote url
 
 ```
   $git remote add upstream <URL TO ORIGINAL REPO>
-```
-
-- **Step-4** : Clone your forked repo
-
-```
-  $git clone <URL TO YOUR FORKED REPO>
 ```
 
 - **Step-5** : Fetch/pull the branches
