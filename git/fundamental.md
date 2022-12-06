@@ -1,5 +1,13 @@
 # GIT
 
+Git is most famous and widely used version control system.
+
+Just the way linux has `man` command to check manual of a command git also provides a command called `help` to know more about a command.
+
+Please use `$git help <command_name>` to know more about a particular command.
+
+---
+
 - [GIT](#git)
   - [States of git files](#states-of-git-files)
     - [Flow of states](#flow-of-states)
@@ -15,7 +23,7 @@
   - [.gitignore](#gitignore)
   - [GitHub](#github)
 
-Git is most famous and widely used version control system.
+---
 
 ## States of git files
 
