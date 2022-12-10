@@ -10,3 +10,7 @@ Read through whichever topic interests you or help you in any way &#128522;
 
 - [Git](git/README.md)
 - [Basics of Linux](linux-basics/README.md)
+
+## Contributions
+
+Please feel free to contribute but please read the [Contribution Guidelines](CONTRIBUTING.md) before submitting the PR.
