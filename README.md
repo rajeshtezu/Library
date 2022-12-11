@@ -10,6 +10,7 @@ Read through whichever topic interests you or help you in any way &#128522;
 
 - [Git](git/README.md)
 - [Basics of Linux](linux-basics/README.md)
+- [Python | Automate the boring stuff](https://github.com/rajeshtezu90/automateboringstuff#readme)
 
 ## Contributions
 
