@@ -13,6 +13,8 @@ Read through whichever topic interests you or help you in any way &#128522;
 - [Python | Automate the boring stuff](https://github.com/rajeshtezu90/automateboringstuff#readme)
 - [DSA with Javascript](https://github.com/rajeshtezu90/ds-algo)
 - [Ampersand State](ampersand/ampersand-state.md)
+- [Web](web/README.md)
+  - [Angular](web/angular/README.md)
 
 ## Contributions
 
