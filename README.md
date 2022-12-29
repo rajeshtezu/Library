@@ -15,6 +15,7 @@ Read through whichever topic interests you or help you in any way &#128522;
 - [Ampersand State](ampersand/ampersand-state.md)
 - [Web](web/README.md)
   - [Angular](web/angular/README.md)
+  - [Web Performance](web/web-performance.md)
 
 ## Contributions
 
@@ -39,6 +40,9 @@ Please feel free to contribute but please read the [Contribution Guidelines](CON
   - [Jest](unit-test/jest/README.md)
   - [Mocha, Chai, Sinon](unit-test/mocha-chai-sinon/README.md)
 - [RxJs](rxjs/README.md)
+- [Http API](http-api/README.md)
+  - [RESTful](http-api/restful/README.md)
+  - [GraphQL](http-api/graphql/README.md)
 - [Web](web/README.md)
   - [CSS](web/css/README.md)
   - [HTML](web/html/README.md)
