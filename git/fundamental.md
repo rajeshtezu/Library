@@ -218,6 +218,14 @@ Note: Don't forget to commit.
       e.g: $git remote add githubRepo https://github.com/rajeshtezu90/Example1.git
     ```
 
+  - OR Add remote with credentials
+
+    ```
+    $git remote set-url origin https://username:github_pat_token@github.com/github-handle/repo-name.git
+    ```
+
+    > **Note**: Conventionally we use `origin` as the remote url nick name
+
   - Show git_url_nick_name
 
     ```
