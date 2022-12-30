@@ -13,6 +13,7 @@ Read through whichever topic interests you or help you in any way &#128522;
 - [Python | Automate the boring stuff](https://github.com/rajeshtezu90/automateboringstuff#readme)
 - [DSA with Javascript](https://github.com/rajeshtezu90/ds-algo)
 - [Ampersand State](ampersand/ampersand-state.md)
+- [Yarn](yarn/README.md)
 - [Web](web/README.md)
   - [Angular](web/angular/README.md)
   - [Web Performance](web/web-performance.md)
@@ -34,7 +35,7 @@ Please feel free to contribute but please read the [Contribution Guidelines](CON
 - [MongoDB](mongodb/README.md)
 - [NodeJs](nodejs/README.md)
 - [NPM](npm/README.md)
-- [Yarn](yarn/README.md)
+
 - [Socket Programming](socket/README.md)
 - [Unit Test](unit-test/README.md)
   - [Jest](unit-test/jest/README.md)
