@@ -11,15 +11,17 @@ Please use `$git help <command_name>` to know more about a particular command.
 - [GIT](#git)
   - [States of git files](#states-of-git-files)
     - [Flow of states](#flow-of-states)
-  - [Global config on your machine:](#global-config-on-your-machine)
-  - [Create git repository/Project:](#create-git-repositoryproject)
+  - [Global config on your machine](#global-config-on-your-machine)
+  - [Create git repository/Project](#create-git-repositoryproject)
   - [Misc](#misc)
-  - [Rename a file:](#rename-a-file)
-  - [Commit directly to the repository:](#commit-directly-to-the-repository)
+  - [Rename a file](#rename-a-file)
+  - [Commit directly to the repository](#commit-directly-to-the-repository)
   - [Undo the changes](#undo-the-changes)
   - [Un-stage files](#un-stage-files)
   - [Getting old versions from the repository](#getting-old-versions-from-the-repository)
   - [Branches](#branches)
+  - [Rename a local branch](#rename-a-local-branch)
+  - [Delete a remote branch](#delete-a-remote-branch)
   - [.gitignore](#gitignore)
   - [GitHub](#github)
 
@@ -35,7 +37,7 @@ Please use `$git help <command_name>` to know more about a particular command.
 
   - Working area -> Staging area -> Repository
 
-## Global config on your machine:
+## Global config on your machine
 
 - Configure your name and email
 
@@ -51,7 +53,7 @@ Please use `$git help <command_name>` to know more about a particular command.
   $git config user.email  --> To show specific settings. here user email
 ```
 
-## Create git repository/Project:
+## Create git repository/Project
 
 - **Step-1**: navigate to the directory you want to make git repository and type
 
@@ -114,7 +116,7 @@ $git diff --staged
 $git rm "fileName"
 ```
 
-## Rename a file:
+## Rename a file
 
 - **Method-1**
   Rename the file from directory directly then do the following
@@ -139,7 +141,7 @@ After executing above commands if we check status it will show file renamed
 
 Note: Don't forget to commit.
 
-## Commit directly to the repository:
+## Commit directly to the repository
 
 - Use this only when you want to commit all the files.
 - Applicable only when files are edited, not added new files or deleted any files
@@ -185,6 +187,26 @@ Note: Don't forget to commit.
 
 ```
   $git checkout <branch_name>
+```
+
+## Rename a local branch
+
+**Step-1**: Checkout to the branch you want to rename
+
+```
+$git checkout <old_branch_name>
+```
+
+**Step-2**: Rename the branch to a new name
+
+```
+$git branch -m <new_branch_name>
+```
+
+## Delete a remote branch
+
+```
+$git push origin --delete <branch_name>
 ```
 
 ## .gitignore
