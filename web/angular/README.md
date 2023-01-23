@@ -32,4 +32,5 @@
 - [Debugging - WIP](notes/debugging.md)
 - [i18n Integration with ngx-translate](notes/i18n-Integration-with-ngx-translate.md)
 - [Rendering Engine - WIP](notes/rendering-engine.md)
+- [NgRx](../../ngrx/README.md)
 - [Tips](notes/tips.md)

@@ -16,6 +16,7 @@ Read through whichever topic interests you or help you in any way &#128522;
 - [Yarn](yarn/README.md)
 - [Web](web/README.md)
   - [Angular](web/angular/README.md)
+  - [NgRx](ngrx/README.md)
   - [Web Performance](web/web-performance.md)
 
 ## Contributions
