@@ -2,6 +2,8 @@
 
 Store (state) management for Angular application.
 
+[WIP]
+
 ## Titles
 
 - [Intro](notes/intro.md)

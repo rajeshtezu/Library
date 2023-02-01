@@ -16,7 +16,8 @@ Read through whichever topic interests you or help you in any way &#128522;
 - [Yarn](yarn/README.md)
 - [Web](web/README.md)
   - [Angular](web/angular/README.md)
-  - [NgRx](ngrx/README.md)
+  - [RxJs - WIP](rxjs/README.md)
+  - [NgRx - WIP](ngrx/README.md)
   - [Web Performance](web/web-performance.md)
 
 ## Contributions
@@ -36,12 +37,10 @@ Please feel free to contribute but please read the [Contribution Guidelines](CON
 - [MongoDB](mongodb/README.md)
 - [NodeJs](nodejs/README.md)
 - [NPM](npm/README.md)
-
 - [Socket Programming](socket/README.md)
 - [Unit Test](unit-test/README.md)
   - [Jest](unit-test/jest/README.md)
   - [Mocha, Chai, Sinon](unit-test/mocha-chai-sinon/README.md)
-- [RxJs](rxjs/README.md)
 - [Http API](http-api/README.md)
   - [RESTful](http-api/restful/README.md)
   - [GraphQL](http-api/graphql/README.md)

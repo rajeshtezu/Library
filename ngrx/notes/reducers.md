@@ -20,7 +20,8 @@ export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 
 export class AddIngredient implements Action {
   readonly type = ADD_INGREDIENT;
-  payload: Ingredient;
+
+  constructor(public payload: Ingredient) {}
 }
 ```
 
@@ -95,4 +96,17 @@ import { Store } from '@ngrx/store';
   <div *ngFor="let ingredient of (ingredients$ | async).ingredients; let i = index">
     {{ ingredient.name }} ({{ ingredient.amount }})
   </div>
+```
+
+- Dispatching actions
+
+Inside a component
+
+```
+import * as ShoppingListActions from './action';
+
+  ...
+
+  const newIngredient = new Ingredient(name, amount);
+  this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));
 ```
