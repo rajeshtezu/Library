@@ -6,10 +6,11 @@ Reactive Extensions for Javascript
 
 - [Introduction](notes/introduction.md)
 - [Observable](notes/observable.md)
+- [Types of Observable](notes/types-of-observable.md)
+- [Creation Operators](notes/creation-operators.md)
 
 ## TODO
 
-- [Types of Observable](notes/types-of-observable.md)
-- [Creation Functions](notes/creation-functions.md)
 - [Pipeable Operators](notes/pipeable-operators.md)
 - [Subjects](notes/subjects.md)
+- [Q&A](notes/Q&A.md)
