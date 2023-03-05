@@ -192,11 +192,159 @@ setTimeout(() => {
 
 ## timer
 
+- Similar to `setTimeout()` function. It waits for specified time then emits `next` and `complete` notification.
+- Return value emitted with `next` notification from `timer()` is `0`
+
+Eg:
+
+```
+import { timer } from 'rxjs';
+
+const subscription = timer(2000).subscribe({
+  next: value => console.log(value),
+  complete: () => console.log('Completed!')
+});
+
+<!-- Below code describe unsubscribing a timer based subscription -->
+setTimeout(() => {
+  subscription.unsubscribe();
+}, 1000);
+```
+
 ## interval
+
+- Similar to `timer()` and `setInterval()`
+- Emits sequential numbers every specified interval of time
+
+Eg:
+
+```
+import { interval } from 'rxjs';
+
+const subscription = interval(1000).subscribe({
+  next: value => console.log(value),
+  complete: () => console.log('Completed!')
+});
+
+<!-- Below code describe unsubscribing a timer based subscription -->
+setTimeout(() => {
+  subscription.unsubscribe();
+}, 5000);
+
+O/P
+---
+0
+1
+2
+3
+4
+```
 
 ## forkJoin
 
+- Accepts other observables as input.
+- We can pass an array of other observables as input to `forkJoin()`.
+- Once we subscribe to it, it will create subscription to all provided observables then it waits for all the observable to **complete**, once done it will emit set of latest values from all of the observables. **[Similar to Promise.all()]**
+
+**Eg-1: forkJoin success scenario**
+
+```
+import { ajax, forkJoin } from 'rxjs';
+
+const randomApi = 'https://random-data-api.com/api';
+
+const name$ = ajax(`${randomApi}/name/random_name`);
+const nation$ = ajax(`${randomApi}/nation/random_nation`);
+const food$ = ajax(`${randomApi}/food/random_food`);
+
+<!-- Without forkJoin -->
+
+name$.subscribe(ajaxRes => console.log(ajaxRes.response.first_name));
+nation$.subscribe(ajaxRes => console.log(ajaxRes.response.capital));
+food$.subscribe(ajaxRes => console.log(ajaxRes.response.dish));
+
+<!-- With forkJoin -->
+
+forkJoin([name$, nation$, food$]).subscribe(
+  ([nameAjax, nationAjax, foodAjax]) => console.log(`
+    Name: ${nameAjax.response.first_name},
+    Nation: ${nationAjax.response.capital},
+    Food: ${foodAjax.response.dish},
+  `)
+);
+```
+
+**Eg-2: forkJoin error scenario**
+
+If any of the observable throws an error, `forkJoin()` will result in a failure state just like `Promise.all()`. It will run teardown logic for all the observables as soon as they are no longer needed.
+
+```
+import { Observable, forkJoin } from 'rxjs';
+
+const a$ = new Observable(subscriber => {
+  setTimeout(() => {
+    subscriber.next('A');
+    subscriber.complete();
+  }, 5000); // 3000
+
+  return () => {
+    console.log('A teardown');
+  }
+});
+
+const b$ = new Observable(subscriber => {
+  setTimeout(() => {
+    subscriber.error('Failure.');
+  }, 3000); // 5000
+
+  return () => {
+    console.log('B teardown');
+  }
+});
+
+forkJoin([a$, b$]).subscribe({
+  next: value => console.log(value),
+  error: err => console.log('Error: ', err),
+});
+
+
+O/P
+---
+Error: Failure.
+```
+
+> **Q.** What would an Observable created using `forkJoin([of('ABC'), interval(1000)])` emit once we subscribe to it?
+>
+> **Ans.** It won't emit anything as the second provided Observable never completes.
+
 ## combineLatest
+
+- `combineLatest()` works similar to `forkJoin()` but
+  - it starts emitting array of values as soon as **all** of the observables emitted some value with `next` or `complete` notification.
+  - it also emits latest values from all the observable as soon as any of them emits a new value again.
+- It will emit a `complete` notification once all of them emitted a `complete` notification.
+- It will also pass down the error notification if any of the observables throws just like `forkJoin()` and run teardown logic on all the observables.
+
+Eg:
+
+```
+import { combineLatest, fromEvent } from 'rxjs';
+
+const temperatureInput = document.getElementById('temperature-input');
+const conversionDropdown = document.getElementById('conversion-dropdown');
+
+const temperatureInputEvent$ = fromEvent(temperatureInput, 'input');
+const conversionDropdownEvent$ = fromEvent(conversionDropdown, 'input');
+
+combineLatest([temperatureInputEvent$, conversionDropdownEvent$])
+  .subscribe(([temperatureInputEvent, conversionDropdownEvent]) => {
+
+    console.log(
+      temperatureInputEvent.target.value,
+      conversionDropdownEvent.target.value,
+    );
+  })
+```
 
 ---
 
