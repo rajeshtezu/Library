@@ -8,9 +8,9 @@ Reactive Extensions for Javascript
 - [Observable](notes/observable.md)
 - [Types of Observable](notes/types-of-observable.md)
 - [Creation Operators](notes/creation-operators.md)
+- [Pipeable Operators](notes/pipeable-operators.md)
 
 ## TODO
 
-- [Pipeable Operators](notes/pipeable-operators.md)
 - [Subjects](notes/subjects.md)
 - [Q&A](notes/Q&A.md)
