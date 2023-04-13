@@ -10,6 +10,7 @@ Reactive Extensions for Javascript
 - [Creation Operators](notes/creation-operators.md)
 - [Pipeable Operators](notes/pipeable-operators.md)
 - [Subjects](notes/subjects.md)
+- [Scheduler](notes/scheduler.md)
 
 ## TODO
 

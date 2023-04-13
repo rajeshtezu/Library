@@ -12,13 +12,14 @@ Read through whichever topic interests you or help you in any way &#128522;
 - [Basics of Linux](linux-basics/README.md)
 - [Python | Automate the boring stuff](https://github.com/rajeshtezu90/automateboringstuff#readme)
 - [DSA with Javascript](https://github.com/rajeshtezu90/ds-algo)
-- [Ampersand State](ampersand/ampersand-state.md)
+- [Ampersand State](reactive-state/ampersand/ampersand-state.md)
 - [Yarn](yarn/README.md)
 - [Web](web/README.md)
   - [Angular](web/angular/README.md)
-  - [RxJs - WIP](rxjs/README.md)
+  - [RxJs](rxjs/README.md)
   - [NgRx - WIP](ngrx/README.md)
   - [Web Performance](web/web-performance.md)
+- [NX Workspace](nx-workspace/README.md)
 
 ## Contributions
 
