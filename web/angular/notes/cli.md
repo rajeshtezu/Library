@@ -1,20 +1,65 @@
 # CLI
 
-## ng add
+Command-line interface tool to initialize, develop, scaffold, and maintain Angular applications from command shell.
 
-TODO
+**Official Documentation** - https://angular.io/cli
 
 ## ng new
 
-TODO
+Create a new Angular project/workspace.
+
+> [Official Doc Link](https://angular.io/cli/new)
+
+```
+ng new [project-name]
+```
+
+Eg:
+
+```
+ng new my-first-project
+```
+
+## ng add
+
+Adds support for an external library to the project.
+
+> [Official Doc Link](https://angular.io/cli/add)
+
+```
+ng add <collection>
+```
+
+Eg:
+
+```
+ng add @angular/pwa
+ng add @ngrx/store
+```
 
 ## ng build
 
-TODO
+Compiles an Angular application or library into an output directory named dist/ at the given output path.
+
+> [Official Doc Link](https://angular.io/cli/build)
+
+```
+ng build [project]
+
+ng b [project]
+```
 
 ## ng serve
 
-TODO
+Builds and serves your application, rebuilding on file changes.
+
+> [Official Doc Link](https://angular.io/cli/serve)
+
+```
+ng serve [project]
+
+ng s [project]
+```
 
 ## ng generate
 
@@ -41,8 +86,3 @@ $ng g module[m] <path/name>
 ```
 $ng g service[s] <path/name>
 ```
-
----
-
-For more options please visit the official docs
-Link - https://angular.io/cli
