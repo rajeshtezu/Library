@@ -1,6 +1,9 @@
 # NgRx
 
-Store (state) management for Angular application.
+- Store (state) management for Angular application.
+  - Adds an in-memory database/datastore to Application
+- Cache management
+- Make http request independent of Component lifecycle
 
 ## Issues with RxJS Approach
 
@@ -58,10 +61,47 @@ Store (state) management for Angular application.
   - Uses RxJS
   - (Uses Typescript)
 
-## Installation
+## Adding ngrx to Angular project/workspace
 
-- Core package for store
+1. Adding and configuring Store
 
-```
-npm install --save @ngrx/store
-```
+   - Add store
+
+   ```
+   ng add @ngrx/store
+   ```
+
+   - Root module configuration
+
+   ```
+   // app.module.ts
+
+   ...
+   imports: [
+     ...,
+     StoreModule.forRoot(reducers, { metaReducers })
+   ]
+   ```
+
+2. To see the store data
+
+   - Add store devtools
+
+   ```
+   ng add @ngrx/store-devtools
+   ```
+
+   - Configure devtools
+
+   ```
+   ...
+   imports: [
+     ...,
+     StoreDevtoolsModule.instrument({
+       maxAge: 25,
+       logOnly: environment.production
+     }),
+   ]
+   ```
+
+3. Install Devtool extension - [Redux DevTools](https://github.com/reduxjs/redux-devtools)
