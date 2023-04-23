@@ -73,7 +73,7 @@
 
    - Root module configuration
 
-   ```
+   ```ts
    // app.module.ts
 
    ...
@@ -93,7 +93,7 @@
 
    - Configure devtools
 
-   ```
+   ```ts
    ...
    imports: [
      ...,
