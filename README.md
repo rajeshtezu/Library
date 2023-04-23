@@ -23,7 +23,7 @@ Read through whichever topic interests you or help you in any way &#128522;
 
 ## Contributions
 
-Please feel free to contribute but please read the [Contribution Guidelines](CONTRIBUTING.md) before submitting the PR.
+Feel free to contribute but please read the [Contribution Guidelines](CONTRIBUTING.md) before submitting the PR.
 
 ## TODO 🚧
 
