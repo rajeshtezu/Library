@@ -8,9 +8,9 @@ Store (state) management for Angular application.
 - [Actions and Reducers](notes/actions-and-reducers.md)
 - [Selectors and Effects](notes/selectors-and-effects.md)
 - [Ngrx Development Tools](notes/ngrx-developement-tools.md)
+- [Ngrx Entity](notes/ngrx-entity.md)
 
 ## WIP
 
-- [Ngrx Entity](notes/ngrx-entity.md)
 - [Ngrx Data](notes/ngrx-data.md)
 - [Mable Testing](notes/marble-testing.md)
