@@ -34,14 +34,14 @@ Similar to filter available in javascript
 
 Eg
 
-```
+```ts
 import { filter } from 'rxjs';
 
 const sportsNewsFeed$ = newsFeed$.pipe(
-  filter(item => item.category === 'sports')
+  filter((item) => item.category === 'sports')
 );
 
-sportsNewsFeed$.subscribe(item => {
+sportsNewsFeed$.subscribe((item) => {
   console.log(item);
 });
 ```
@@ -55,20 +55,22 @@ Similar to `map` available in javascript
 
 Eg
 
-```
+```ts
 import { ajax, forkJoin, map } from 'rxjs';
 
 const randomFirstName$ = ajax('url').pipe(
-  map(ajaxResponse => ajaxResponse.response.first_name)
+  map((ajaxResponse) => ajaxResponse.response.first_name)
 );
 
 const randomCapital$ = ajax('url').pipe(
-  map(ajaxResponse => ajaxResponse.response.dish)
+  map((ajaxResponse) => ajaxResponse.response.dish)
 );
 
-forkJoin([randomFirstName$, randomCapital$]).subscribe(([firstName, capital]) => {
-  console.log(`First Name: ${firstName}, Capital: ${capital}`);
-});
+forkJoin([randomFirstName$, randomCapital$]).subscribe(
+  ([firstName, capital]) => {
+    console.log(`First Name: ${firstName}, Capital: ${capital}`);
+  }
+);
 ```
 
 ## tap
@@ -79,18 +81,18 @@ Works like a spy and allows us to cause some side-effect without interacting wit
 
 Eg
 
-```
+```ts
 import { of, tap } from 'rxjs';
 
 of(1, 2, 3, 4, 5, 9, 34, 10)
   .pipe(
-    tap(value => console.log('Spy: ', value)),
-    map(value => value * 2),
-    tap(value => console.log('Spy: ', value)),
-    filter(value => value > 10),
-    tap(value => console.log('Spy: ', value)),
+    tap((value) => console.log('Spy: ', value)),
+    map((value) => value * 2),
+    tap((value) => console.log('Spy: ', value)),
+    filter((value) => value > 10),
+    tap((value) => console.log('Spy: ', value))
   )
-  .subscribe(value => console.log('Output: ', value));
+  .subscribe((value) => console.log('Output: ', value));
 ```
 
 ## debounceTime
@@ -99,7 +101,7 @@ Works with the debounce concept.
 
 Eg
 
-```
+```ts
 import { fromEvent, map, debounceTime } from 'rxjs';
 
 const sliderInput = document.querySelector('input#slider');
@@ -107,9 +109,9 @@ const sliderInput = document.querySelector('input#slider');
 fromEvent(sliderInput, 'input')
   .pipe(
     debounceTime(2000),
-    map(event => event.target['value'])
+    map((event) => event.target['value'])
   )
-  .subscribe(value => console.log(value));
+  .subscribe((value) => console.log(value));
 ```
 
 ## catchError
@@ -122,31 +124,31 @@ Handles error notification but
 
 **Eg-1:** Continue with a different Observable when there's an error
 
-```
+```ts
 import { of, map, catchError } from 'rxjs';
 
 of(1, 2, 3, 4, 5)
   .pipe(
-    map(n => {
+    map((n) => {
       if (n === 4) {
         throw 'four!';
       }
       return n;
     }),
-    catchError(err => of('I', 'II', 'III', 'IV', 'V'))
+    catchError((err) => of('I', 'II', 'III', 'IV', 'V'))
   )
-  .subscribe(x => console.log(x));
-  // 1, 2, 3, I, II, III, IV, V
+  .subscribe((x) => console.log(x));
+// 1, 2, 3, I, II, III, IV, V
 ```
 
 **Eg-2:** Retry the caught source Observable again in case of error, similar to `retry()` operator
 
-```
+```ts
 import { of, map, catchError, take } from 'rxjs';
 
 of(1, 2, 3, 4, 5)
   .pipe(
-    map(n => {
+    map((n) => {
       if (n === 4) {
         throw 'four!';
       }
@@ -155,32 +157,32 @@ of(1, 2, 3, 4, 5)
     catchError((err, caught) => caught),
     take(30)
   )
-  .subscribe(x => console.log(x));
-  // 1, 2, 3, 1, 2, 3, ...
+  .subscribe((x) => console.log(x));
+// 1, 2, 3, 1, 2, 3, ...
 ```
 
 **Eg-3:** Throw a new error when the source Observable throws an error
 
-```
+```ts
 import { of, map, catchError } from 'rxjs';
 
 of(1, 2, 3, 4, 5)
   .pipe(
-    map(n => {
+    map((n) => {
       if (n === 4) {
         throw 'four!';
       }
       return n;
     }),
-    catchError(err => {
+    catchError((err) => {
       throw 'error in source. Details: ' + err;
     })
   )
   .subscribe({
-    next: x => console.log(x),
-    error: err => console.log(err)
+    next: (x) => console.log(x),
+    error: (err) => console.log(err),
   });
-  // 1, 2, 3, error in source. Details: four!
+// 1, 2, 3, error in source. Details: four!
 ```
 
 ### EMPTY Observable
@@ -189,25 +191,25 @@ It simply sends a complete notification.
 
 Eg:
 
-```
+```ts
 import { of, map, catchError, take, EMPTY } from 'rxjs';
 
 of(1, 2, 3, 4, 5)
   .pipe(
-    map(n => {
+    map((n) => {
       if (n === 4) {
         throw 'four!';
       }
       return n;
     }),
-    catchError(err => EMPTY),
+    catchError((err) => EMPTY),
     take(30)
   )
   .subscribe({
-    next: x => console.log(x),
-    complete: () => console.log('Completed!')
+    next: (x) => console.log(x),
+    complete: () => console.log('Completed!'),
   });
-  // 1, 2, 3, Completed!
+// 1, 2, 3, Completed!
 ```
 
 ---
@@ -218,7 +220,7 @@ Doc Link - https://rxjs.dev/guide/operators#transformation-operators
 
 Eg
 
-```
+```ts
 import { EMPTY, fromEvent } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { catchError, concatMap, map } from 'rxjs/operators';
@@ -226,16 +228,16 @@ import { catchError, concatMap, map } from 'rxjs/operators';
 const endpointInput = document.querySelector('button#endpoint');
 const fetchButton = document.querySelector('button#fetch');
 
-fromEvent(fetchEvent, 'click').pipe(
-  map(() => endpointInput.value),
-  concatMap(value => ajax(`url/${value}`).pipe(
-    catchError(() => EMPTY)
-  ))
-).subscribe({
-  next: value => console.log(value),
-  error: err => console.log('Error: ', err),
-  complete: () => console.log('Complete!')
-});
+fromEvent(fetchEvent, 'click')
+  .pipe(
+    map(() => endpointInput.value),
+    concatMap((value) => ajax(`url/${value}`).pipe(catchError(() => EMPTY)))
+  )
+  .subscribe({
+    next: (value) => console.log(value),
+    error: (err) => console.log('Error: ', err),
+    complete: () => console.log('Complete!'),
+  });
 ```
 
 ## concatMap
@@ -249,14 +251,12 @@ fromEvent(fetchEvent, 'click').pipe(
 
 **Eg:** For each click event, tick every second from 0 to 3, with no concurrency
 
-```
+```ts
 import { fromEvent, concatMap, interval, take } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
-const result = clicks.pipe(
-  concatMap(ev => interval(1000).pipe(take(4)))
-);
-result.subscribe(x => console.log(x));
+const result = clicks.pipe(concatMap((ev) => interval(1000).pipe(take(4))));
+result.subscribe((x) => console.log(x));
 
 // Results in the following:
 // (results are not concurrent)
@@ -276,11 +276,11 @@ It emits the source notification as soon as it finishes but in case the previous
 
 **Eg:** For each click event, tick every second from 0 to 3, with no concurrency
 
-```
+```ts
 import { of, switchMap } from 'rxjs';
 
-const switched = of(1, 2, 3).pipe(switchMap(x => of(x, x ** 2, x ** 3)));
-switched.subscribe(x => console.log(x));
+const switched = of(1, 2, 3).pipe(switchMap((x) => of(x, x ** 2, x ** 3)));
+switched.subscribe((x) => console.log(x));
 // outputs
 // 1
 // 1
@@ -301,15 +301,15 @@ Waits for all the inner subscription to complete then flattens all the values an
 
 **Eg:** Map and flatten each letter to an Observable ticking every 1 second
 
-```
+```ts
 import { of, mergeMap, interval, map } from 'rxjs';
 
 const letters = of('a', 'b', 'c');
 const result = letters.pipe(
-  mergeMap(x => interval(1000).pipe(map(i => x + i)))
+  mergeMap((x) => interval(1000).pipe(map((i) => x + i)))
 );
 
-result.subscribe(x => console.log(x));
+result.subscribe((x) => console.log(x));
 
 // Results in the following:
 // a0

@@ -13,8 +13,8 @@ When Observable is executed it can emit some notifications: `next`, `error`, `co
 
 - `Observable`
 
-```
-const observable$ = new Observable(subscriber => {
+```ts
+const observable$ = new Observable((subscriber) => {
   subscriber.next('Alice');
   subscriber.next('Bob');
 });
@@ -22,15 +22,15 @@ const observable$ = new Observable(subscriber => {
 
 - `Observer` (Handler to react to Observable object)
 
-```
+```ts
 const observer = {
-  next: value => console.log(value)
-}
+  next: (value) => console.log(value),
+};
 ```
 
 - `Subscription` (Runs the callback inside Observable and passes observer to it)
 
-```
+```ts
 const subscription = observable$.subscribe(observer);
 ```
 
@@ -40,7 +40,7 @@ Now each time when a value is emitted from the observable, the observer will be 
 
 - The subscription could be ended/canceled by calling the `unsubscribe()` method on object returned from `subscribe()` method
 
-```
+```ts
 subscription.unsubscribe();
 ```
 
@@ -48,8 +48,8 @@ subscription.unsubscribe();
 
 - Shorthand of only passing `next` function in the observer
 
-```
-observable$.subscribe(value => console.log(value));
+```ts
+observable$.subscribe((value) => console.log(value));
 ```
 
 - Sample code [Link](../code-samples/observable.ts)
@@ -58,7 +58,7 @@ observable$.subscribe(value => console.log(value));
 
 - Every new subscription will execute the observable callback independently and the observer passed can have different logics.
 
-```
+```ts
 import { Observable } from 'rxjs';
 
 const observable$ = new Observable<string>((subscriber) => {
@@ -86,8 +86,8 @@ observable$.subscribe((value: string) => console.log(value));
 
 - Observable provides a way to write a teardown logic i.e. to allow running a piece of code when it emits `error` or `complete` notification or it is `unsubscribed`.
 
-```
-const observable$ = new Observable<T>(subscriber => {
+```ts
+const observable$ = new Observable<T>((subscriber) => {
   subscriber.next('Some value');
 
   setTimeout(() => {
@@ -100,13 +100,13 @@ const observable$ = new Observable<T>(subscriber => {
 
   return () => {
     console.log('Teardown');
-  }
+  };
 });
 
 observable$.subscribe({
-  next: value => console.log(value),
-  error: err => console.log(err),
-  complete: () => console.log('Completed')
+  next: (value) => console.log(value),
+  error: (err) => console.log(err),
+  complete: () => console.log('Completed'),
 });
 ```
 
@@ -114,8 +114,8 @@ observable$.subscribe({
 
 Eg:
 
-```
-const interval$ = new Observable<T>(subscriber => {
+```ts
+const interval$ = new Observable<T>((subscriber) => {
   let count = 1;
 
   const intervalId = setInterval(() => {
@@ -125,10 +125,10 @@ const interval$ = new Observable<T>(subscriber => {
 
   return () => {
     clearInterval(intervalId);
-  }
+  };
 });
 
-const subscription = interval$.subscribe(value => console.log(value));
+const subscription = interval$.subscribe((value) => console.log(value));
 
 setTimeout(() => {
   subscription.unsubscribe();

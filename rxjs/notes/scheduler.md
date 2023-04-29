@@ -14,7 +14,7 @@ Basically, it alters the execution context for that piece of code, as a result, 
 
 Eg:
 
-```
+```ts
 import { Observable, observeOn, asyncScheduler } from 'rxjs';
 
 const observable = new Observable((observer) => {
@@ -22,9 +22,7 @@ const observable = new Observable((observer) => {
   observer.next(2);
   observer.next(3);
   observer.complete();
-}).pipe(
-  observeOn(asyncScheduler)
-);
+}).pipe(observeOn(asyncScheduler));
 
 console.log('just before subscribe');
 observable.subscribe({

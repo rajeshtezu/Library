@@ -23,7 +23,7 @@ A Subject is like an Observable, but can multicast to many Observers. Subjects a
 
 **Eg-1**: Two Observers attached to a Subject, and we feed some values to the Subject
 
-```
+```ts
 import { Subject } from 'rxjs';
 
 const subject = new Subject<number>();
@@ -47,7 +47,7 @@ subject.next(2);
 
 **Eg-2**: Since a Subject is an Observer, this also means you may provide a Subject as the argument to the subscribe of any Observable
 
-```
+```ts
 import { Subject, from } from 'rxjs';
 
 const subject = new Subject<number>();
@@ -82,7 +82,7 @@ A multicasted Observable uses a Subject under the hood to make multiple Observer
 
 **Eg**: similar to the previous example which used `observable.subscribe(subject)`
 
-```
+```ts
 import { from, Subject, multicast } from 'rxjs';
 
 const source = from([1, 2, 3]);
@@ -115,7 +115,7 @@ multicasted.connect();
 
 **Eg**: BehaviorSubject is initialized with the value 0 which the first Observer receives when it subscribes. The second Observer receives the value 2 even though it subscribed after the value 2 was sent.
 
-```
+```ts
 import { BehaviorSubject } from 'rxjs';
 const subject = new BehaviorSubject(0); // 0 is the initial value
 
@@ -150,7 +150,7 @@ subject.next(3);
 
 **Eg-1**: When creating a ReplaySubject, you can specify how many values to replay:
 
-```
+```ts
 import { ReplaySubject } from 'rxjs';
 const subject = new ReplaySubject(3); // buffer 3 values for new subscribers
 
@@ -183,7 +183,7 @@ subject.next(5);
 
 **Eg-2**: We can also specify a window time in milliseconds, besides of the buffer size, to determine how old the recorded values can be
 
-```
+```ts
 import { ReplaySubject } from 'rxjs';
 const subject = new ReplaySubject(100, 500 /* windowTime */);
 
@@ -220,7 +220,7 @@ The AsyncSubject is a variant where only the last value of the Observable execut
 
 Eg:
 
-```
+```ts
 import { AsyncSubject } from 'rxjs';
 const subject = new AsyncSubject();
 
@@ -253,7 +253,7 @@ Sometimes the emitted value doesn't matter as much as the fact that a value was 
 
 Eg:
 
-```
+```ts
 const subject = new Subject<void>();
 setTimeout(() => subject.next(), 1000);
 ```

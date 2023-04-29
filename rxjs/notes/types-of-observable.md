@@ -20,20 +20,26 @@ There are two types of Observables - `Hot` and `Cold`
 
 eg: Observable connected to a DOM event (mouse event)
 
-```
+```ts
 import { Observable } from 'rxjs';
 
 const helloButton = document.querySelector('button#hello');
 
-const helloClick$ = new Observable<MouseEvent>(subscriber => {
-  helloButton.addEventListener('click', event => {
+const helloClick$ = new Observable<MouseEvent>((subscriber) => {
+  helloButton.addEventListener('click', (event) => {
     subscriber.next(event);
   });
 });
 
-helloClick$.subscribe(event => console.log('Sub-1: ', event.type, event.x, event.y));
-helloClick$.subscribe(event => console.log('Sub-2: ', event.type, event.x, event.y));
-helloClick$.subscribe(event => console.log('Sub-3: ', event.type, event.x, event.y));
+helloClick$.subscribe((event) =>
+  console.log('Sub-1: ', event.type, event.x, event.y)
+);
+helloClick$.subscribe((event) =>
+  console.log('Sub-2: ', event.type, event.x, event.y)
+);
+helloClick$.subscribe((event) =>
+  console.log('Sub-3: ', event.type, event.x, event.y)
+);
 ```
 
 ## Cold Observable
@@ -45,14 +51,14 @@ helloClick$.subscribe(event => console.log('Sub-3: ', event.type, event.x, event
 
 eg:
 
-```
+```ts
 import { ajax } from 'rxjs/ajax';
 
 const ajax$ = ajax('https://some-url');
 
-ajax$.subscribe(data => console.log('Sub-1: ', data.response));
-ajax$.subscribe(data => console.log('Sub-2: ', data.response));
-ajax$.subscribe(data => console.log('Sub-3: ', data.response));
+ajax$.subscribe((data) => console.log('Sub-1: ', data.response));
+ajax$.subscribe((data) => console.log('Sub-2: ', data.response));
+ajax$.subscribe((data) => console.log('Sub-3: ', data.response));
 ```
 
 > **Note**: `ajax` is a [Creation Operator](creation-operators.md).

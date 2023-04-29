@@ -19,7 +19,7 @@ Creation Operators/Functions provide an easy way to create an observable with so
 
 Eg:
 
-```
+```ts
 import { of } from 'rxjs';
 
 of('Alice', 'Bob', 'Charlie').subscribe(
@@ -27,16 +27,16 @@ of('Alice', 'Bob', 'Charlie').subscribe(
   complete: () => console.log('Completed')
 );
 
-o/p:
-Alice
-Bob
-Charlie
-Completed
+// o/p:
+// Alice
+// Bob
+// Charlie
+// Completed
 ```
 
 Eg: Creating a custom `of` function (Polyfill)
 
-```
+```ts
 import { Observable } from 'rxjs';
 
 function customOf(...args: string[]): Observable<string> {
@@ -51,20 +51,20 @@ customOf('Alice', 'Bob', 'Charlie').subscribe(
   complete: () => console.log('Completed')
 );
 
-o/p:
-Alice
-Bob
-Charlie
-Completed
+// o/p:
+// Alice
+// Bob
+// Charlie
+// Completed
 ```
 
 ## from
 
 - Creates an Observable from an `Array`, an `array-like object`, a `Promise`, an `iterable object`, or an `Observable-like object`.
 
-Eg-1: Array to Observable
+**Eg-1**: Array to Observable
 
-```
+```ts
 import { from } from 'rxjs';
 
 from(['Alice', 'Bob', 'Charlie']).subscribe(
@@ -72,16 +72,16 @@ from(['Alice', 'Bob', 'Charlie']).subscribe(
   complete: () => console.log('Completed')
 );
 
-o/p:
-Alice
-Bob
-Charlie
-Completed
+// o/p:
+// Alice
+// Bob
+// Charlie
+// Completed
 ```
 
-Eg-2: Promise to Observable - `resolve` case
+**Eg-2**: Promise to Observable - `resolve` case
 
-```
+```ts
 import { from } from 'rxjs';
 
 const myPromise = new Promise((resolve, reject) => {
@@ -93,14 +93,14 @@ from(myPromise).subscribe(
   complete: () => console.log('Completed')
 );
 
-o/p:
-Resolved!
-Completed
+// o/p:
+// Resolved!
+// Completed
 ```
 
 Eg-3: Promise to Observable - `reject` case
 
-```
+```ts
 import { from } from 'rxjs';
 
 const myPromise = new Promise((resolve, reject) => {
@@ -113,8 +113,8 @@ from(myPromise).subscribe(
   complete: () => console.log('Completed')
 );
 
-o/p:
-Rejected!
+// o/p:
+// Rejected!
 ```
 
 > **Note**: In Eg-3, `complete` notification was not fired.
@@ -135,24 +135,24 @@ Rejected!
 
 Eg:
 
-```
+```ts
 fromEvent(button, 'click');
 
-subscribe()   <-----> addEventListener()
-unsubscribe() <-----> removeEventListener()
+// subscribe()   <-----> addEventListener()
+// unsubscribe() <-----> removeEventListener()
 ```
 
 - Observable created using `fromEvent` is `hot`.
 
-Eg-1: Using `fromEvent`
+**Eg-1**: Using `fromEvent`
 
-```
+```ts
 import { fromEvent } from 'rxjs';
 
 const triggerButton = document.querySelector('button#trigger');
 
 const subscription = fromEvent<MouseEvent>(triggerButton, 'click').subscribe(
-  event => console.log(event.type, event.x, event.y)
+  (event) => console.log(event.type, event.x, event.y)
 );
 
 setTimeout(() => {
@@ -160,30 +160,31 @@ setTimeout(() => {
 }, 5000);
 ```
 
-Eg-2: Creating polyfill for `fromEvent`
+**Eg-2**: Creating polyfill for `fromEvent`
 
-```
+```ts
 import { Observable } from 'rxjs';
 
 const triggerButton = document.querySelector('button#trigger');
 
 function customFromEvent<T>(eventTarget: any, type: string) {
-  return new Observable<T>(subscriber => {
+  return new Observable<T>((subscriber) => {
     const handler = (event) => {
       subscriber.next(event);
-    }
+    };
 
     eventTarget.addEventListener(type, handler);
 
     return () => {
       eventTarget.removeEventListener(type, handler);
-    }
+    };
   });
 }
 
-const subscription = customFromEvent<MouseEvent>(triggerButton, 'click').subscribe(
-  event => console.log(event.type, event.x, event.y)
-);
+const subscription = customFromEvent<MouseEvent>(
+  triggerButton,
+  'click'
+).subscribe((event) => console.log(event.type, event.x, event.y));
 
 setTimeout(() => {
   subscription.unsubscribe();
@@ -197,15 +198,15 @@ setTimeout(() => {
 
 Eg:
 
-```
+```ts
 import { timer } from 'rxjs';
 
 const subscription = timer(2000).subscribe({
-  next: value => console.log(value),
-  complete: () => console.log('Completed!')
+  next: (value) => console.log(value),
+  complete: () => console.log('Completed!'),
 });
 
-<!-- Below code describe unsubscribing a timer based subscription -->
+// Below code describe unsubscribing a timer based subscription
 setTimeout(() => {
   subscription.unsubscribe();
 }, 1000);
@@ -218,26 +219,26 @@ setTimeout(() => {
 
 Eg:
 
-```
+```ts
 import { interval } from 'rxjs';
 
 const subscription = interval(1000).subscribe({
-  next: value => console.log(value),
-  complete: () => console.log('Completed!')
+  next: (value) => console.log(value),
+  complete: () => console.log('Completed!'),
 });
 
-<!-- Below code describe unsubscribing a timer based subscription -->
+//  Below code describe unsubscribing a timer based subscription
 setTimeout(() => {
   subscription.unsubscribe();
 }, 5000);
 
-O/P
----
-0
-1
-2
-3
-4
+// O/P
+// ---
+// 0
+// 1
+// 2
+// 3
+// 4
 ```
 
 ## forkJoin
@@ -248,7 +249,7 @@ O/P
 
 **Eg-1: forkJoin success scenario**
 
-```
+```ts
 import { ajax, forkJoin } from 'rxjs';
 
 const randomApi = 'https://random-data-api.com/api';
@@ -257,16 +258,17 @@ const name$ = ajax(`${randomApi}/name/random_name`);
 const nation$ = ajax(`${randomApi}/nation/random_nation`);
 const food$ = ajax(`${randomApi}/food/random_food`);
 
-<!-- Without forkJoin -->
+// Without forkJoin
 
-name$.subscribe(ajaxRes => console.log(ajaxRes.response.first_name));
-nation$.subscribe(ajaxRes => console.log(ajaxRes.response.capital));
-food$.subscribe(ajaxRes => console.log(ajaxRes.response.dish));
+name$.subscribe((ajaxRes) => console.log(ajaxRes.response.first_name));
+nation$.subscribe((ajaxRes) => console.log(ajaxRes.response.capital));
+food$.subscribe((ajaxRes) => console.log(ajaxRes.response.dish));
 
-<!-- With forkJoin -->
+// With forkJoin
 
 forkJoin([name$, nation$, food$]).subscribe(
-  ([nameAjax, nationAjax, foodAjax]) => console.log(`
+  ([nameAjax, nationAjax, foodAjax]) =>
+    console.log(`
     Name: ${nameAjax.response.first_name},
     Nation: ${nationAjax.response.capital},
     Food: ${foodAjax.response.dish},
@@ -278,10 +280,10 @@ forkJoin([name$, nation$, food$]).subscribe(
 
 If any of the observable throws an error, `forkJoin()` will result in a failure state just like `Promise.all()`. It will run teardown logic for all the observables as soon as they are no longer needed.
 
-```
+```ts
 import { Observable, forkJoin } from 'rxjs';
 
-const a$ = new Observable(subscriber => {
+const a$ = new Observable((subscriber) => {
   setTimeout(() => {
     subscriber.next('A');
     subscriber.complete();
@@ -289,28 +291,27 @@ const a$ = new Observable(subscriber => {
 
   return () => {
     console.log('A teardown');
-  }
+  };
 });
 
-const b$ = new Observable(subscriber => {
+const b$ = new Observable((subscriber) => {
   setTimeout(() => {
     subscriber.error('Failure.');
   }, 3000); // 5000
 
   return () => {
     console.log('B teardown');
-  }
+  };
 });
 
 forkJoin([a$, b$]).subscribe({
-  next: value => console.log(value),
-  error: err => console.log('Error: ', err),
+  next: (value) => console.log(value),
+  error: (err) => console.log('Error: ', err),
 });
 
-
-O/P
----
-Error: Failure.
+// O/P
+// ---
+// Error: Failure.
 ```
 
 > **Q.** What would an Observable created using `forkJoin([of('ABC'), interval(1000)])` emit once we subscribe to it?
@@ -327,7 +328,7 @@ Error: Failure.
 
 Eg:
 
-```
+```ts
 import { combineLatest, fromEvent } from 'rxjs';
 
 const temperatureInput = document.getElementById('temperature-input');
@@ -336,14 +337,14 @@ const conversionDropdown = document.getElementById('conversion-dropdown');
 const temperatureInputEvent$ = fromEvent(temperatureInput, 'input');
 const conversionDropdownEvent$ = fromEvent(conversionDropdown, 'input');
 
-combineLatest([temperatureInputEvent$, conversionDropdownEvent$])
-  .subscribe(([temperatureInputEvent, conversionDropdownEvent]) => {
-
+combineLatest([temperatureInputEvent$, conversionDropdownEvent$]).subscribe(
+  ([temperatureInputEvent, conversionDropdownEvent]) => {
     console.log(
       temperatureInputEvent.target.value,
-      conversionDropdownEvent.target.value,
+      conversionDropdownEvent.target.value
     );
-  })
+  }
+);
 ```
 
 ---

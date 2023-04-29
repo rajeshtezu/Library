@@ -18,11 +18,11 @@
 
 ## Basic syntax
 
-```
+```ts
 someObservableFun('some value').subscribe({
-  next: value => console.log('Value: ', value),
-  error: err => console.log('Error: ', err),
-})
+  next: (value) => console.log('Value: ', value),
+  error: (err) => console.log('Error: ', err),
+});
 ```
 
 - Observable can emit any number of values at various point of time
