@@ -2,7 +2,7 @@
 
 **Step-1**: Add `animations` property in `@Component({...})` decorator with following functions
 
-```
+```ts
 @Component({
   ...
   animations: [
@@ -29,13 +29,13 @@ export class MyComponent{}
 
 **Step-2**: Add a `<div>` and bind a triggering property
 
-```
+```html
 <div [@divState]="animationState"></div>
 ```
 
 **Step-3**: Assign/change the value to/of `animationState` inside the Component controller on some click other event
 
-```
+```ts
 ...
 if(condition){
   this.animationState = 'normal';

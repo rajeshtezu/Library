@@ -5,7 +5,7 @@ This is helpful when you want couple of values different for different environme
 **Step-1**: Add key-value paris in the `environment.ts` and `environment.prod.ts` files
 **Step-2**: Import environment like this
 
-```
+```ts
 import { environment } from 'path/environments/environment';
 ```
 

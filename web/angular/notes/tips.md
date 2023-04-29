@@ -28,7 +28,7 @@ Link - [Component styling best practices](https://angular.io/guide/component-sty
 
   Eg:
 
-  ```
+  ```ts
   ...
 
   const subs = new Subscription();

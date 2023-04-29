@@ -17,7 +17,7 @@ Some of the built-in pipes:
 
 **Step-1**: Define the pipe
 
-```
+```ts
 @Pipe({ name: 'shorten' })
 export class ShortenPipe implements PipeTransform {
   transform(value: string) {
@@ -30,9 +30,8 @@ export class ShortenPipe implements PipeTransform {
 
 **Step-3**: Use in template
 
-```
-<div> {{ name | shorten }} </div>
-
+```html
+<div>{{ name | shorten }}</div>
 ```
 
 > **Note**: By default the pipes are `pure`, we can make it `impure` by setting `pure: false` in the `@Pipe()` decorator but this is not recommended as it will cause performance issue.

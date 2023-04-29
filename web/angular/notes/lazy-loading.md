@@ -8,22 +8,23 @@ In Angular we use lazy loading to load a module in the browser only when we are 
 
 ## Configuration for main Module
 
-Eg: app.router.module.ts
+**Eg**: app.router.module.ts
 
-```
+```ts
 const routes: Routes = [
   {
     path: '/home',
-    loadChildren: () => import('./home/home.module')  // NOTICE THIS LINE
-      .then(module => module.HomeModule)
-  }
-]
+    loadChildren: () =>
+      import('./home/home.module') // NOTICE THIS LINE
+        .then((module) => module.HomeModule),
+  },
+];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)                      // NOTICE forRoot here
+    RouterModule.forRoot(routes), // NOTICE forRoot here
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRouterModule {}
 ```
@@ -34,18 +35,19 @@ export class AppRouterModule {}
 
 ## Configuration for Lazy Loaded Module
 
-Eg: home.router.module.ts
+**Eg**: home.router.module.ts
 
-```
+```ts
 @NgModule({
   imports: [
-    RouterModule.forChild([                         // NOTICE forChild here
-      { path: 'home', component: HomeComponent }
-    ])
+    RouterModule.forChild([
+      // NOTICE forChild here
+      { path: 'home', component: HomeComponent },
+    ]),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRouter { }
+export class HomeRouter {}
 ```
 
 - Routes will be configured with `forChild`

@@ -30,7 +30,7 @@ $ng build --prod
 
 > Check docs for cache config
 >
-> ```
+> ```ts
 > cacheConfig: {
 >   "maxSize": 5,
 >   "maxAge": "6h",

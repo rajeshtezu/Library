@@ -6,7 +6,7 @@
 
 - `HttpClient` is an observable
 
-```
+```ts
 constructor(private http: HttpClient){}
 
 postRequest() {
@@ -22,7 +22,7 @@ postRequest() {
 
 **Step-3**: Use pipe() to transform data if needed.
 
-```
+```ts
 http.get<T>(...)
   .pipe(map(...))
   .subscribe(...);
@@ -33,21 +33,18 @@ http.get<T>(...)
 
 ## Adding headers to request
 
-```
+```ts
 http.get(
   'url-path',
   { headers: new HttpHeader({ key: 'value' }) },
-  { params: new HttpParams()
-                .append()
-                .set()
-  }
-)
+  { params: new HttpParams().append().set() }
+);
 ```
 
 - To get the full response from API and not just the body part, add `observe: 'response'` in the header.
   Eg
 
-```
+```ts
 http.post('url-path', <data>, { observe: 'response' })
   .subscribe(...);
 ```
@@ -65,7 +62,7 @@ http.post('url-path', <data>, { observe: 'response' })
 
 **Step-1**: Create an interceptor service
 
-```
+```ts
 export class AuthInterceptorService implements httpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler){
     console.log('Request is on its way');
@@ -81,7 +78,7 @@ export class AuthInterceptorService implements httpInterceptor {
 
 **Step-2**: Register/Inject the service to Module
 
-```
+```ts
 ...
 
 provides: [

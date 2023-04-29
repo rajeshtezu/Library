@@ -4,7 +4,7 @@
 
 - To receive property inside a component just like react props.
 
-```
+```ts
 interface IElement {...}
 
 @Component({...})
@@ -21,7 +21,7 @@ export class ServerElementComponent {
 
 Passing the props to component
 
-```
+```html
 <server-element [element]="..."> </server-element>
 ```
 
@@ -29,7 +29,7 @@ Passing the props to component
 
 - A way to communicate from child to parent component. ie. passing data from child to parent
 
-```
+```ts
 @Component({...})
 export class ChildComponent {
   @Output('alias') serverCreated: new EventEmitter<T>();
@@ -48,7 +48,7 @@ TODO: Add usage
 
 ## View Encapsulation - CSS/Style encapsulation
 
-```
+```ts
 @Component({
   ...
   encapsulation: ViewEncapsulation.Emulate
@@ -64,7 +64,7 @@ TODO: Add usage
 - Getting local reference through ViewChild
 - Executes `afterViewInit` [See lifecycle methods](lifecycle-methods.md)
 
-```
+```ts
 @Component({...})
 export class ServerElementComponent {
   @ViewChild('referenceName') <varName>: ElementRef;
@@ -77,7 +77,7 @@ export class ServerElementComponent {
 
 ## ContentChild() - access other component element
 
-```
+```ts
 @Component({...})
 export class ServerElementComponent {
   @ContentChild('referenceName') <varName>: T;

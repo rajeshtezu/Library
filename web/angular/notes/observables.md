@@ -14,7 +14,7 @@ Observables are a blueprint for creating streams and plumbing them together with
 
 Eg:
 
-```
+```ts
 import { interval } from 'rxjs';
 
 ...
@@ -26,7 +26,7 @@ interval(1000).subscribe(count => console.log(count));
 
 **Step-1**: Create an Observable
 
-```
+```ts
 const customObservable = new Observable((subscriber) => {
   let count = 0;
 
@@ -39,15 +39,15 @@ const customObservable = new Observable((subscriber) => {
 
 **Step-2**: Subscribe to the Observable
 
-```
-customObservable.subscribe(data => {
+```ts
+customObservable.subscribe((data) => {
   console.log(data);
 });
 ```
 
 ### Error Handling and Complete
 
-```
+```ts
 customObservable.subscribe(
   next(data) {
     console.log(data);
@@ -72,7 +72,7 @@ customObservable.subscribe(
 
 - Call `subscriber.complete()`.
 
-```
+```ts
 const customObservable = new Observable((subscriber) => {
   let count = 0;
 
@@ -80,7 +80,7 @@ const customObservable = new Observable((subscriber) => {
     subscriber.next(count);
     count++;
 
-    if(count === 5) subscriber.complete();    // NOTICE THIS LINE
+    if (count === 5) subscriber.complete(); // NOTICE THIS LINE
   }, 1000);
 });
 ```
@@ -91,7 +91,7 @@ Allows to subscribe to manipulated data.
 
 Eg
 
-```
+```ts
 import { pipe, map, ... } from 'rxjs/operator';
 
 customObservable.pipe(map(data: T) => {
@@ -115,25 +115,25 @@ customObservable.pipe(map(data: T) => {
 
 **Step-1**: Create event emitter
 
-```
+```ts
 myEventEmitter = new Subject<boolean>();
 ```
 
 **Step-2**: Subscribe to the Subject
 
-```
-myEventEmitter.subscribe(value => console.log(value));
+```ts
+myEventEmitter.subscribe((value) => console.log(value));
 ```
 
 **Step-3**: Emit an event
 
-```
+```ts
 myEventEmitter.next(true);
 ```
 
 **Step-4**: Unsubscribe the Subject
 
-```
+```ts
 myEventEmitter.unsubscribe();
 ```
 

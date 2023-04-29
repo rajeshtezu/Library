@@ -21,12 +21,10 @@ In order to use forms angular provides a built-in module: `FormModule`
 
 Eg
 
-```
-<form
-  (ngSubmit)="onSubmit(form)"
-  #form="ngForm"                  <-- This line will give form data as JS object in onSubmit()
->
-</form>
+```html
+<form (ngSubmit)="onSubmit(form)" #form="ngForm"></form>
+
+<!-- #form="ngForm" : This will give form data as JS object in onSubmit() -->
 ```
 
 > Note: `@ViewChild()` could also be used to access reference here
@@ -38,7 +36,7 @@ Eg
 
 Eg
 
-```
+```css
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
@@ -57,20 +55,17 @@ input.ng-invalid.ng-touched {
 
 **Step-1**: Create form group
 
-```
+```ts
 this.signUpForm = new FormGroup({
-  'username': new FormControl(null),
-  'email': new FormControl(null),
+  username: new FormControl(null),
+  email: new FormControl(null),
 });
 ```
 
 **Step-2**: Bind the reactive form in the template
 
-```
-<form
-  [formGroup]="signUpForm"
-  (ngSubmit)="onSubmit()"
->
+```html
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
   <input ... formControlName="username" />
   <input ... formControlName="email" />
 </form>
@@ -84,10 +79,12 @@ this.signUpForm = new FormGroup({
 > **Note**: We can create a FormGroup inside a FormGroup from step-1 and the properties (field) could be accessed by path (ie, `'parent.child'`). Also, will need to wrap the form control with the parent FormGroup name.
 > Eg
 >
-> ```
+> ```html
 > <form formGroupName="userData">
->   <input formControlName="username">
->   <span *ngIf="!signUpForm.get('userData.username').value">Username required!</span>
+>   <input formControlName="username" />
+>   <span *ngIf="!signUpForm.get('userData.username').value"
+>     >Username required!</span
+>   >
 > </form>
 > ```
 
@@ -95,14 +92,14 @@ this.signUpForm = new FormGroup({
 
 ## Custom Validator
 
-```
+```ts
 forbiddenNames = (control: FormControl) => {
-  if(!this.forbiddenNames.includes(control.value)) {
-    return { 'nameIsForbidden': true };
+  if (!this.forbiddenNames.includes(control.value)) {
+    return { nameIsForbidden: true };
   }
 
   return null;
-}
+};
 ```
 
 - Now pass this as callback in the same fashion as we do with other validators.

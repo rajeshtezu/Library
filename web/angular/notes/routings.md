@@ -8,15 +8,13 @@ It will be configured in the Application's Module.
 
 - Path should not be prepended with `/`.
 
-```
-const appRoutes = [
-  { path: '', component: HomeComponent }
-]
+```ts
+const appRoutes = [{ path: '', component: HomeComponent }];
 ```
 
 **Step-2**: Register the `Routes` in the Module in the import section.
 
-```
+```ts
 imports: [
   ...
   RouterModule.forRoot(appRoutes)
@@ -28,7 +26,7 @@ exports: [RouterModule]
 
 **Step-4**: Add links for the route where needed.
 
-```
+```html
 <a routerLink="/home"> Home </a>
 ```
 
@@ -41,7 +39,7 @@ exports: [RouterModule]
 
 **With absolute path**
 
-```
+```ts
 @Component({...})
 export class MyComponent {
   constructor(private router: Router) {}
@@ -56,14 +54,14 @@ export class MyComponent {
 
 **With relative path**
 
-```
+```ts
 constructor(..., private route: ActivatedRoute) {}
 this.router.navigate(['servers'], { relativeTo: this.route });
 ```
 
 **Dynamic Route Path**
 
-```
+```ts
 { path: 'users/:id', ... }
 ```
 
@@ -71,7 +69,7 @@ Here `:id` is dynamic variable
 
 **Accessing the `id` in the path**
 
-```
+```ts
 constructor(private route: ActivateRoute){}
 
 getId() {
@@ -81,15 +79,15 @@ getId() {
 
 - Providing in html template
 
-```
+```html
 <!-- /users/10/Anna -->
 <a [routerLink]="['/users', 10, 'Anna']"> Anna </a>
 ```
 
 - Adding a subscriber to update value based on url route change
 
-```
-this.route.params.subscribe(params => {
+```ts
+this.route.params.subscribe((params) => {
   this.user.id = params['id'];
   this.user.name = params['name'];
 });
@@ -101,7 +99,7 @@ this.route.params.subscribe(params => {
 
 - In html template
 
-```
+```html
 <a
   [routerLink]="['/servers', 5, 'edit']"
   [queryParams]="{ allowEdit: '1' }"
@@ -114,8 +112,10 @@ this.route.params.subscribe(params => {
 
 - In component controller
 
-```
-this.route.navigate(['/servers', id, 'edit'], { queryParams: { allowEdit: '1' } });
+```ts
+this.route.navigate(['/servers', id, 'edit'], {
+  queryParams: { allowEdit: '1' },
+});
 ```
 
 ## Child Route
@@ -126,7 +126,7 @@ this.route.navigate(['/servers', id, 'edit'], { queryParams: { allowEdit: '1' } 
 
 Eg
 
-```
+```ts
 {
   path: 'servers', component: ServerComponent,
   children: {
@@ -138,25 +138,20 @@ Eg
 
 - Preserving/Merging existing query params
 
-```
-this.router.navigate(
-  ['edit'],
-  {
-    relativeTo: this.route,
-    queryParamsHandling: 'preserve'     // other option: 'merge'
-  }
-)
+```ts
+this.router.navigate(['edit'], {
+  relativeTo: this.route,
+  queryParamsHandling: 'preserve', // other option: 'merge'
+});
 ```
 
 ## 404 Handling
 
-```
+```ts
 [
-  ...
-
-  { path: 'not-found', component: PageNotFoundComponent },
-  { path: '**', redirectTo: '/not-found' }
-]
+  ...{ path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found' },
+];
 ```
 
 > Note: This should be the last path in the routes array
@@ -171,7 +166,7 @@ Allowing access to certain components only for a set of authenticated users.
 
 **Step-1**: Create an AuthGuard (Name could be anything) service
 
-```
+```ts
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
@@ -180,12 +175,11 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.isAuthenticated()
-      .then(authenticated => {
-        if(authenticated) return true;
+    return this.authService.isAuthenticated().then((authenticated) => {
+      if (authenticated) return true;
 
-        this.router.navigate(['/login']);
-      })
+      this.router.navigate(['/login']);
+    });
   }
 }
 ```
@@ -194,7 +188,7 @@ export class AuthGuard implements CanActivate {
 
 **Step-3**: Add the `AuthGuard` service to Router paths
 
-```
+```ts
 [
   { path: 'servers',
     canActivate: [AuthGuard, ...],
@@ -221,7 +215,7 @@ Check docs for more info
 
 **Step-1**: Create a separate Module for routes
 
-```
+```ts
 const appRoutes: Routes = [ ... ];
 
 @NgModule({
@@ -235,7 +229,7 @@ export class AppRoutingModule {}
 
 **Step-2**: Bind the `AppRoutingModule` to main Module
 
-```
+```ts
 @NgModule({
   imports: [
     AppRoutingModule,

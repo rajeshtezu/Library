@@ -6,7 +6,7 @@ Steps to create service and use it
 
 **Step-1**: Create a service
 
-```
+```ts
 export class AccountService {
   private accounts = [
     {
@@ -33,7 +33,7 @@ export class AccountService {
 
 **Step-2**: Use in component
 
-```
+```ts
 @Component({
   ...,
   providers: [AccountService]
@@ -68,7 +68,7 @@ If the service is injected to
 - `@Injectable({ providedIn: 'root' })` : Use this to inject the directly to the root module (highest level)
   - When using this, we don't need to inject the service explicitly into the module by providing in Module decorator
 
-```
+```ts
 @Injectable()                                               // ------> 1
 export class AccountService {
   ...

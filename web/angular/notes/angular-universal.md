@@ -17,7 +17,7 @@ Note: `ModuleMapLoaderModule` allows lazy loading (Important to have lazy loaded
 
 **Step-3**: Check which code could be run on the Browser and which on Server then add a check using `PlatformId` property and `isPlatformBrowser()` method.
 
-```
+```ts
 constructor(..., @Inject(PLATFORM_ID) private platformId) {}
 
 ...

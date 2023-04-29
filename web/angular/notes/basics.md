@@ -15,31 +15,31 @@ Eg: *ngIf, *ngFor
 
 - **Attribute Directive**: Only change the element they are placed on
 
-Eg: For dynamic style
+**Eg**: For dynamic style
 
-```
+```html
 [ngStyle] = "{ 'background-color': 'red' }"
 ```
 
-Eg: For dynamic class
+**Eg**: For dynamic class
 
-```
+```html
 [ngClass] = "{ className: true }"
 ```
 
 ---
 
-Eg: Using for loop
+**Eg**: Using for loop
 
-```
+```ts
 <p *ngFor="let server of servers">
   {{server}}
 </p>
 ```
 
-Eg: Using for loop with index
+**Eg**: Using for loop with index
 
-```
+```ts
 <p *ngFor="let server of servers; let i = index">
   {{index}} - {{server}}
 </p>

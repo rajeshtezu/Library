@@ -17,7 +17,7 @@ Read through whichever topic interests you or help you in any way &#128522;
 - [Web](web/README.md)
   - [Angular](web/angular/README.md)
   - [RxJs](rxjs/README.md)
-  - [NgRx - WIP](ngrx/README.md)
+  - [NgRx](ngrx/README.md)
   - [Web Performance](web/web-performance.md)
 - [NX Workspace](nx-workspace/README.md)
 

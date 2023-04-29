@@ -8,11 +8,11 @@ Only change the element they are placed on
 
 Steps to create
 
-**Step - 1**
+**Step-1**
 
-```
+```ts
 @Directive({
-  selector: ['highlightMe']
+  selector: ['highlightMe'],
 })
 export class HighlightMeDirective implements OnInit {
   constructor(private elementRef: ElementRef) {}
@@ -23,18 +23,16 @@ export class HighlightMeDirective implements OnInit {
 }
 ```
 
-**Step - 2**
+**Step-2**
 
 Add the directive in the declaration part of module same as component.
 
-**Step - 3**
+**Step-3**
 
 Use in the html template
 
-```
-<p highlightMe>
-  I am highlighted text
-</p>
+```html
+<p highlightMe>I am highlighted text</p>
 ```
 
 ### BETTER APPROACH
@@ -43,9 +41,9 @@ This approach will always work, even if used with Service Worker and not the DOM
 
 **1. Simple highlight directive**
 
-```
+```ts
 @Directive({
-  selector: ['highlightMe']
+  selector: ['highlightMe'],
 })
 export class HighlightMeDirective implements OnInit {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
@@ -62,9 +60,9 @@ export class HighlightMeDirective implements OnInit {
 
 **2. Highlight directive with hover effect**
 
-```
+```ts
 @Directive({
-  selector: ['highlightMe']
+  selector: ['highlightMe'],
 })
 export class HighlightMeDirective implements OnInit {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
@@ -86,8 +84,6 @@ export class HighlightMeDirective implements OnInit {
       false
     );
   }
-
-
 }
 ```
 
@@ -95,7 +91,7 @@ export class HighlightMeDirective implements OnInit {
 
 Eg:
 
-```
+```ts
 @HostListener('mouseleave') mouseleave(eventData: Event) {
   this.backgroundColor = 'green';
 }
@@ -109,9 +105,9 @@ Eg:
 
 **3. Directive with argument**
 
-```
+```ts
 @Directive({
-  selector: ['highlightMe']
+  selector: ['highlightMe'],
 })
 export class HighlightMeDirective implements OnInit {
   @Input() defaultBgColor: string = 'green';
@@ -139,7 +135,7 @@ export class HighlightMeDirective implements OnInit {
 
 Now use in html template
 
-```
+```html
 <p highlightMe [defaultColor]="'yellow'" highlightColor="grey">
   Highlight me with change on hover
 </p>
@@ -153,29 +149,30 @@ Now use in html template
 
 **Step - 1.** Create the directive
 
-```
+```ts
 @Directive({
-  selector: ['appIfNot']  // Opposite of *ngIf
+  selector: ['appIfNot'], // Opposite of *ngIf
 })
 export class HighlightMeDirective implements OnInit {
   @Input() set appIfNot(condition: boolean) {
-    if(!condition) {
+    if (!condition) {
       this.vcRef.createEmbeddedView(this.templateRef);
     } else {
       this.vcRef.clear();
     }
   }
 
-  constructor(private templateRef: TemplateRef<any>, private vcRef: ViewContainerRef) {}
+  constructor(
+    private templateRef: TemplateRef<any>,
+    private vcRef: ViewContainerRef
+  ) {}
 }
 ```
 
 **Step - 2.** Use in HTML template
 
-```
-<div *appIfNot="condition">
-  ...
-</div>
+```html
+<div *appIfNot="condition">...</div>
 ```
 
 ### BuiltIn Structural Directives
@@ -186,7 +183,7 @@ export class HighlightMeDirective implements OnInit {
 
 Eg: ngSwitch
 
-```
+```html
 <div [ngSwitch]="value">
   <p *ngSwitchCase="5">Value is 5</p>
   <p *ngSwitchCase="10">Value is 10</p>
@@ -199,16 +196,12 @@ Eg: ngSwitch
 
 **Behind the scene**
 
-```
-<div *ngIf="condition">
-  ...
-</div>
+```html
+<div *ngIf="condition">...</div>
 ```
 
 The above code will be converted to as shown below
 
-```
-<ng-template [ngIf]="condition">
-  ...
-</ng-template>
+```html
+<ng-template [ngIf]="condition"> ... </ng-template>
 ```
