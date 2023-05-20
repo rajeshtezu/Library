@@ -21,6 +21,7 @@ Read through whichever topic interests you or help you in any way &#128522;
   - [RxJs](rxjs/README.md)
   - [NgRx](ngrx/README.md)
   - [Web Performance](web/web-performance.md)
+  - [WebRTC](web/webrtc/README.md)
 - [NX Workspace](nx-workspace/README.md)
 
 ## Contributions
@@ -56,7 +57,6 @@ Feel free to contribute but please read the [Contribution Guidelines](CONTRIBUTI
   - [Micro Frontend](web/micro-frontend/README.md)
   - [PWA](web/pwa/README.md)
   - [ReactJs](web/reactjs/README.md)
-  - [WebRTC](web/webrtc/README.md)
   - [ESM, CJS, AMD, UMD](web/esm-cjs-amd-umd.md)
   - [Web Worker](web/web-worker.md)
   - [Worklet](web/worklet.md)
