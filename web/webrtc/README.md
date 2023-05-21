@@ -12,10 +12,21 @@ An open framework for the web that enables Real-Time Communications (RTC) capabi
   - [Remote Streams](notes/fundamental/5.remtoe-streams.md)
   - [Data Channels](notes/fundamental/6.data-channels.md)
   - [Turn Server](notes/fundamental/7.turn-server.md)
-- [Protocols](notes/protocols/)
+- [Topology](notes/topology/topology.md)
+- [Protocols](notes/protocols/README.md)
+  - [WebRTC Specific](notes/protocols/README.md)
+    - [SIP](notes/protocols/README.md#sip)
+    - [SDP](notes/protocols/README.md#sdp)
+    - [RTP \& RTCP](notes/protocols/README.md#rtp--rtcp)
+    - [FMTP](notes/protocols/README.md#fmtp)
+    - [DTMF](notes/protocols/README.md#dtmf)
+    - [JSEP](notes/protocols/README.md#jsep)
   - [NAT](notes/protocols/nat.md)
+  - [PSTN](notes/protocols/pstn.md)
+  - [ROAP](notes/protocols/roap.md)
+- [Debugging](notes/debugging.md)
 
 ## TODO
 
 - [SDP](notes/sdp/)
-- [Topology](notes/topology/)
+- [Media Server](notes/media-server/media-server.md)
