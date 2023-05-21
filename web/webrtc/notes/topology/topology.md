@@ -13,6 +13,8 @@
 
 ## Peer to Peer (p2p) / Mesh Topology
 
+<img src="../../../../images/mesh-topology.png"  width="300" height="200">
+
 - Every peer establishes a connection with every other peer in the network
 - There are `n*(n-1)` number of connections
 - Each participant in a session directly connects to all other participants without the use of a server
@@ -23,6 +25,8 @@
 - This connection object adds all the relevant info (video, audio stream, STUN/TURN, ICE)
 
 ## MCU (Multipoint Conferencing Unit) Topology
+
+<img src="../../../../images/mcu-topology.png"  width="300" height="200">
 
 - MCUs: Multipoint Control Units
 - It requires very little intelligence in device endpoint
@@ -47,6 +51,8 @@
 
 ## SFU (Selective Forwarding Unit) Topology
 
+<img src="../../../../images/sfu-topology.png"  width="350" height="250">
+
 - It is the most popular modern approach
 - Every participant sends media stream to a centralized server (SFU)
 - Every participant receives streams from all other participants via the same central server
@@ -67,4 +73,5 @@
 ---
 
 Q. Does SFU fit all use cases?
+
 Ans. No. What's next? **Hybrid** (Combination of topologies)
