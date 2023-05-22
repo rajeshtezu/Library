@@ -8,6 +8,7 @@
   - [Disadvantage of MCU](#disadvantage-of-mcu)
 - [SFU (Selective Forwarding Unit) Topology](#sfu-selective-forwarding-unit-topology)
   - [Advantages of SFU](#advantages-of-sfu)
+- [WebRTC Gateway (also known as WebRTC to PSTN)](#webrtc-gateway-also-known-as-webrtc-to-pstn)
 
 ---
 
@@ -69,6 +70,10 @@
 - Since every participant may send multiple versions of the same media stream, it provide support for various screen layouts
 - `SFU` can work with asymmetric bandwidth (Higher downlink bandwidth than uplink bandwidth)
 - `SFU` is just a "forwarder" - server load is minimum
+
+## WebRTC Gateway (also known as WebRTC to PSTN)
+
+WebRTC gateways provide a bridge between WebRTC applications and traditional telephony networks, such as the public switched telephone network (PSTN). These gateways enable communication between WebRTC endpoints and non-WebRTC devices, allowing users to make and receive calls to/from regular telephones. WebRTC gateways handle the conversion between the different protocols used in WebRTC and the PSTN.
 
 ---
 

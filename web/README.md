@@ -5,6 +5,10 @@ This contains content related to building web frontend.
 ## Table of Content
 
 - [Angular](angular/README.md)
+- [WebRTC](webrtc/README.md)
+- [RxJs](../rxjs/README.md)
+- [NgRx](../ngrx/README.md)
+- [Web Performance](web-performance.md)
 
 ## TODO
 
@@ -16,7 +20,6 @@ This contains content related to building web frontend.
 - [Micro Frontend](micro-frontend/README.md)
 - [PWA](pwa/README.md)
 - [ReactJs](reactjs/README.md)
-- [WebRTC](webrtc/README.md)
 - [ESM, CJS, AMD, UMD](esm-cjs-amd-umd.md)
 - [Web Worker](web-worker.md)
 - [Worklet](worklet.md)
