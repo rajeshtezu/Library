@@ -23,6 +23,7 @@ Git is most famous and widely used version control system.
 - [Git Reset](notes/git-reset.md)
 - [Git Stash](notes/git-stash.md)
 - [Merge and Rebase](notes/merge-and-rebase.md)
+- [Cherry Pick](notes/cherry-pick.md)
 - [Update Last Commit Changes](notes/update-last-commit-changes.md)
 - [Squash commits into single commit](notes/squash-commits.md)
 - [Open Source Contribution](notes/open-source-contribution.md)
