@@ -11,7 +11,4 @@ Reactive Extensions for Javascript
 - [Pipeable Operators](notes/pipeable-operators.md)
 - [Subjects](notes/subjects.md)
 - [Scheduler](notes/scheduler.md)
-
-## TODO
-
 - [Q&A](notes/Q&A.md)
