@@ -29,3 +29,4 @@ Git is most famous and widely used version control system.
 - [Open Source Contribution](notes/open-source-contribution.md)
 - [Modify Specific Commit](notes/modify-specific-commit.md)
 - [Change Commit Author](notes/change-commit-author.md)
+- [Worktree](notes/worktree.md)
