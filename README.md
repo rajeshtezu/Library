@@ -23,6 +23,8 @@ Read through whichever topic interests you or help you in any way &#128522;
   - [Web Performance](web/web-performance.md)
   - [WebRTC](web/webrtc/README.md)
 - [NX Workspace](nx-workspace/README.md)
+- [DevOps](devops/README.md)
+  - [Docker](devops/docker/README.md)
 
 ## Contributions
 
