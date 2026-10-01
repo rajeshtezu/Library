@@ -20,6 +20,7 @@ Git is most famous and widely used version control system.
   - [Delete a remote branch](notes/fundamental.md#delete-a-remote-branch)
   - [.gitignore](notes/fundamental.md#gitignore)
   - [GitHub](notes/fundamental.md#github)
+- [SSH config for GitHub Connection](notes/git-ssh.md)
 - [Git Reset](notes/git-reset.md)
 - [Git Stash](notes/git-stash.md)
 - [Merge and Rebase](notes/merge-and-rebase.md)
